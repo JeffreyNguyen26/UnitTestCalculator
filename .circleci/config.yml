@@ -9,6 +9,9 @@ jobs:
 
     steps:
       - checkout
+      - store_artifacts:
+          path: D:\Study\Git\UnitTestCalculator\dist
+          destination: BuiltFile
   
   test:
     machine:
