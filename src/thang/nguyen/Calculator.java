@@ -12,6 +12,10 @@ import java.util.StringTokenizer;
  * @author ACER
  */
 public class Calculator {
+    public static void main(String[] args) {
+        
+    }
+    
     public static int findMax(int arr[]){  
         int max=arr[0];//arr[0] instead of 0  
         for(int i=1;i<arr.length;i++){  
