@@ -9,26 +9,29 @@ jobs:
 
     steps:
       - checkout
+      - run:
+          name: "Build"
+          command: mvn build ./UnitTestCalculator > /artifact
       - store_artifacts:
-          path: D:\Study\Git\UnitTestCalculator\dist
+          path: D:\Study\Git\UnitTestCalculator
           destination: BuiltFile
   
-  test:
-    machine:
-      image: windows-server-2019-vs2019:stable
+  # test:
+  #   machine:
+  #     image: windows-server-2019-vs2019:stable
       
-    resource_class: windows.medium
-    steps:
-      - checkout
-      - run:
-          name: Save test results
-          command: |
-            mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
-          when: always
+  #   resource_class: windows.medium
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Save test results
+  #         command: |
+  #           mkdir -p ~/test-results/junit/
+  #           find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+  #         when: always
 
-      - store_test_results:
-          path: D:\Study\Git\UnitTestCalculator\dist
+  #     - store_test_results:
+  #         path: D:\Study\Git\UnitTestCalculator\dist
 
 
 workflows:
@@ -36,6 +39,6 @@ workflows:
   workflow:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      # - test:
+      #     requires:
+      #       - build
