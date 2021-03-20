@@ -8,10 +8,13 @@ jobs:
     resource_class: windows.medium
 
     steps:
-      - checkout
-      - run:
-          name: "Build"
-          command: mvn --batch-mode --update-snapshots verify > /artifact
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Build 
+        run: mvn --batch-mode --update-snapshots verify
       - store_artifacts:
           path: D:\Study\Git\UnitTestCalculator
           destination: BuiltFile
