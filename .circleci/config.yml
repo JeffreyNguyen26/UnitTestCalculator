@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Build"
-          command: mvn build ./UnitTestCalculator > /artifact
+          command: mvn --batch-mode --update-snapshots verify > /artifact
       - store_artifacts:
           path: D:\Study\Git\UnitTestCalculator
           destination: BuiltFile
