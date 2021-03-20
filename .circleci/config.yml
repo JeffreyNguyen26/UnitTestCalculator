@@ -2,8 +2,13 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: circleci/openjdk:8-jdk
+    machine:
+      image: windows-server-2019-vs2019:stable
+      
+    resource_class: windows.medium
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+      JAVA_HOME: C:\Program Files\Java\jdk1.8.0_181\lib
 
     steps:
       - checkout
