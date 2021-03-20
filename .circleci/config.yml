@@ -12,12 +12,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Maven Install
-          command:  mvn dependency:go-offline install
-      - run:
-          name: "Set up JDK 1.8"
-          command: actions/setup-java@v1
       - run: 
           name: "Build"
           command: mvn --batch-mode --update-snapshots verify
