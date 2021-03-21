@@ -22,8 +22,8 @@ jobs:
   #       path: build/libs
   #       destination: libs
   build:
-    docker:
-      - image: circleci/java:8-jdk
+    machine:
+      image: ubuntu-1604:202007-01
     steps:
       - checkout
       - run:
