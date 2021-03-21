@@ -27,9 +27,16 @@ jobs:
     steps:
       - checkout
       - run:
-         name: T1
-         command: |
-           ant -f builds/build.xml deploy:
+          name: Instll JDK
+          command: |
+            sudo apt-get update && sudo apt-get install openjdk-11-jdk
+            sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+            sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+            java -version
+      - run:
+          name: T1
+          command: |
+            ant -f builds/build.xml deploy:
   # test:
   #   machine:
   #     image: windows-server-2019-vs2019:stable
