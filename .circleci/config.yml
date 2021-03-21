@@ -7,7 +7,7 @@ jobs:
     - checkout
     - restore_cache:
         keys:
-        - gradle-{{ checksum "build.xml" }}
+        - xml-{{ checksum "build.xml" }}
     - run: xml assemble
     - run: xml run
     - run: xml test
