@@ -1,27 +1,35 @@
 version: 2
 jobs:
+  # build:
+  #   docker:
+  #   - image: cimg/openjdk:8.0.252-browsers
+  #   steps:
+  #   - checkout
+  #   - restore_cache:
+  #       keys:
+  #       - xml-{{ checksum "build.xml" }}
+  #   # - run: xml assemble
+  #   - run: xml run
+  #   - run: xml test
+  #   - save_cache:
+  #       paths:
+  #       - ~/.xml
+  #       key: xml-{{ checksum "build.xml" }}
+  #   - store_artifacts:
+  #       path: build/distributions
+  #       destination: distributions
+  #   - store_artifacts:
+  #       path: build/libs
+  #       destination: libs
   build:
     docker:
-    - image: cimg/openjdk:8.0.252-browsers
+      - image: circleci/java:8-jdk
     steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - xml-{{ checksum "build.xml" }}
-    # - run: xml assemble
-    - run: xml run
-    - run: xml test
-    - save_cache:
-        paths:
-        - ~/.xml
-        key: xml-{{ checksum "build.xml" }}
-    - store_artifacts:
-        path: build/distributions
-        destination: distributions
-    - store_artifacts:
-        path: build/libs
-        destination: libs
-  
+      - checkout
+      - run:
+         name: T1
+         command: |
+           ant -f builds/build.xml
   # test:
   #   machine:
   #     image: windows-server-2019-vs2019:stable
