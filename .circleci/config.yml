@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/openjdk:8.0.252-browsers
+    - image: cimg/openjdk:8.0.252-browsers
     steps:
     - checkout
     - restore_cache:
