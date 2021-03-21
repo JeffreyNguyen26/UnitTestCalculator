@@ -8,7 +8,7 @@ jobs:
     - restore_cache:
         keys:
         - xml-{{ checksum "build.xml" }}
-    - run: xml assemble
+    # - run: xml assemble
     - run: xml run
     - run: xml test
     - save_cache:
