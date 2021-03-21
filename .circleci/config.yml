@@ -29,7 +29,7 @@ jobs:
       - run:
          name: T1
          command: |
-           ant -f builds/build.xml
+           ant -f builds/build.xml deploy:
   # test:
   #   machine:
   #     image: windows-server-2019-vs2019:stable
