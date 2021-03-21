@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          key: demo-{{ checksum "pom.xml" }}
       - run: mvn dependency:go-offline
-      - store_artifacts:
-          path: D:\Study\Git\UnitTestCalculator
-          destination: BuiltFile
+      - run: mvn package
   
   # test:
   #   machine:
